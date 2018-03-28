@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzsys.yun.mapper.ChisFollowupPanMapper">
+
+  <resultMap id="BaseResultMap" type="com.gzsys.yun.entity.ChisFollowupPan">
+    <id column="GUID" jdbcType="VARCHAR" property="guid" />
+    <result column="ORG" jdbcType="VARCHAR" property="org" />
+    <result column="DOCGUID" jdbcType="VARCHAR" property="docguid" />
+    <result column="USRGUID" jdbcType="VARCHAR" property="usrguid" />
+    <result column="SICGUID" jdbcType="VARCHAR" property="sicguid" />
+    <result column="FOLLOWOPTION" jdbcType="VARCHAR" property="followoption" />
+    <result column="FOLLOWDATETIME" jdbcType="TIMESTAMP" property="followdatetime" />
+    <result column="FOLLOWSTATE" jdbcType="VARCHAR" property="followstate" />
+    <result column="CRTUSR" jdbcType="VARCHAR" property="crtusr" />
+    <result column="CRTDAT" jdbcType="TIMESTAMP" property="crtdat" />
+    <result column="UPDATEUSR" jdbcType="VARCHAR" property="updateusr" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    GUID, ORG, DOCGUID, USRGUID, SICGUID, FOLLOWOPTION, FOLLOWDATETIME, FOLLOWSTATE, 
+    CRTUSR, CRTDAT, UPDATEUSR, UPDATEDATE, STATUS
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CHIS_FOLLOWUP_PLAN
+    where GUID = #{guid,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CHIS_FOLLOWUP_PLAN
+    where GUID = #{guid,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.gzsys.yun.entity.ChisFollowupPan">
+    insert into CHIS_FOLLOWUP_PLAN (GUID, ORG, DOCGUID, 
+      USRGUID, SICGUID, FOLLOWOPTION, 
+      FOLLOWDATETIME, FOLLOWSTATE, CRTUSR, 
+      CRTDAT, UPDATEUSR, UPDATEDATE, 
+      STATUS)
+    values (#{guid,jdbcType=VARCHAR}, #{org,jdbcType=VARCHAR}, #{docguid,jdbcType=VARCHAR}, 
+      #{usrguid,jdbcType=VARCHAR}, #{sicguid,jdbcType=VARCHAR}, #{followoption,jdbcType=VARCHAR}, 
+      #{followdatetime,jdbcType=TIMESTAMP}, #{followstate,jdbcType=VARCHAR}, #{crtusr,jdbcType=VARCHAR}, 
+      #{crtdat,jdbcType=TIMESTAMP}, #{updateusr,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.gzsys.yun.entity.ChisFollowupPan">
+    insert into CHIS_FOLLOWUP_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        GUID,
+      </if>
+      <if test="org != null">
+        ORG,
+      </if>
+      <if test="docguid != null">
+        DOCGUID,
+      </if>
+      <if test="usrguid != null">
+        USRGUID,
+      </if>
+      <if test="sicguid != null">
+        SICGUID,
+      </if>
+      <if test="followoption != null">
+        FOLLOWOPTION,
+      </if>
+      <if test="followdatetime != null">
+        FOLLOWDATETIME,
+      </if>
+      <if test="followstate != null">
+        FOLLOWSTATE,
+      </if>
+      <if test="crtusr != null">
+        CRTUSR,
+      </if>
+      <if test="crtdat != null">
+        CRTDAT,
+      </if>
+      <if test="updateusr != null">
+        UPDATEUSR,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="org != null">
+        #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="docguid != null">
+        #{docguid,jdbcType=VARCHAR},
+      </if>
+      <if test="usrguid != null">
+        #{usrguid,jdbcType=VARCHAR},
+      </if>
+      <if test="sicguid != null">
+        #{sicguid,jdbcType=VARCHAR},
+      </if>
+      <if test="followoption != null">
+        #{followoption,jdbcType=VARCHAR},
+      </if>
+      <if test="followdatetime != null">
+        #{followdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followstate != null">
+        #{followstate,jdbcType=VARCHAR},
+      </if>
+      <if test="crtusr != null">
+        #{crtusr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtdat != null">
+        #{crtdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateusr != null">
+        #{updateusr,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzsys.yun.entity.ChisFollowupPan">
+    update CHIS_FOLLOWUP_PLAN
+    <set>
+      <if test="org != null">
+        ORG = #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="docguid != null">
+        DOCGUID = #{docguid,jdbcType=VARCHAR},
+      </if>
+      <if test="usrguid != null">
+        USRGUID = #{usrguid,jdbcType=VARCHAR},
+      </if>
+      <if test="sicguid != null">
+        SICGUID = #{sicguid,jdbcType=VARCHAR},
+      </if>
+      <if test="followoption != null">
+        FOLLOWOPTION = #{followoption,jdbcType=VARCHAR},
+      </if>
+      <if test="followdatetime != null">
+        FOLLOWDATETIME = #{followdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followstate != null">
+        FOLLOWSTATE = #{followstate,jdbcType=VARCHAR},
+      </if>
+      <if test="crtusr != null">
+        CRTUSR = #{crtusr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtdat != null">
+        CRTDAT = #{crtdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateusr != null">
+        UPDATEUSR = #{updateusr,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GUID = #{guid,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.gzsys.yun.entity.ChisFollowupPan">
+    update CHIS_FOLLOWUP_PLAN
+    set ORG = #{org,jdbcType=VARCHAR},
+      DOCGUID = #{docguid,jdbcType=VARCHAR},
+      USRGUID = #{usrguid,jdbcType=VARCHAR},
+      SICGUID = #{sicguid,jdbcType=VARCHAR},
+      FOLLOWOPTION = #{followoption,jdbcType=VARCHAR},
+      FOLLOWDATETIME = #{followdatetime,jdbcType=TIMESTAMP},
+      FOLLOWSTATE = #{followstate,jdbcType=VARCHAR},
+      CRTUSR = #{crtusr,jdbcType=VARCHAR},
+      CRTDAT = #{crtdat,jdbcType=TIMESTAMP},
+      UPDATEUSR = #{updateusr,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=VARCHAR}
+    where GUID = #{guid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

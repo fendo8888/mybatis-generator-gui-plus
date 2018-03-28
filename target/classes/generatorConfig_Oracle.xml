@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration> 
+	<!-- 引入配置文件 --> 
+	<!-- 指定数据连接驱动jar地址 --> 
+    <classPathEntry  location="D:\MavenRepository\com\oracle\ojdbc6\6.0\ojdbc6-6.0.jar"/> 	
+	<context id="DB2Tables"  targetRuntime="MyBatis3">
+	    <!-- 自动生成tostring方法 -->
+	    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        
+        <!-- 注释生成器配置 -->
+        <commentGenerator>
+            <!-- 设置编码为UTF-8 -->
+		    <property name="javaFileEncoding" value="UTF-8"/>
+			<!-- 是否禁止显示日期 true：是 ： false:否 -->
+			<property name="suppressDate" value="false" />
+			<!-- 是否去除自动生成的所有注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+			<!-- 是否添加字段注释 true:是 false：否 -->
+			<property name="addRemarkComments" value="true" />
+			<!-- 自定义属性 作者名称 -->
+			<property name="author" value="Fendo" />
+			<!-- 自定义属性 当前版本 -->
+			<property name="version" value="1.0" />	
+			<!-- 自定义属性 版权 -->
+			<property name="copyright" value="2017-2020 贯众健康公司" />						
+		</commentGenerator>		
+		
+        <!--数据库链接URL，用户名、密码 -->   
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@106.14.160.67:1521:test" userId="test" password="Eru43wPo">  
+			  <!-- 针对oracle数据库 -->
+			    <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <!-- 生成模型的包名和位置-->  
+        <javaModelGenerator targetPackage="com.gzsys.yun.entity" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <!-- 生成映射文件的包名和位置-->  
+        <sqlMapGenerator targetPackage="resources/mapper" targetProject="src/main">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <!-- 生成DAO的包名和位置-->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.gzsys.yun.mapper" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator> 
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->  
+<!-- 		<table tableName="CHIS_CHARTMSG" domainObjectName="ChisChartMsg" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+		<table tableName="HEALTH_DICT_ENTRY" domainObjectName="HealthDictEntery" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+		<table tableName="HEALTH_DICT_TYPE" domainObjectName="HealtDictType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+		<table tableName="HEALTH_LOG_HISTORY" domainObjectName="HealtLogHistory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+		<table tableName="USER_BASE" domainObjectName="UserBase" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> -->                       
+		<table tableName="SICKBLDTL" domainObjectName="Sickbldtl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+		
+        
+    </context>  
+</generatorConfiguration>

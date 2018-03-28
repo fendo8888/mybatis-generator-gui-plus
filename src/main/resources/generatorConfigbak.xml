@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration> 
+	<!-- 引入配置文件 --> 
+	<!-- 指定数据连接驱动jar地址 --> 
+    <classPathEntry  location="D:\MavenRepository\com\oracle\ojdbc6\6.0\ojdbc6-6.0.jar"/> 	
+	<context id="DB2Tables"  targetRuntime="MyBatis3">
+	    <!-- 自动生成tostring方法 -->
+	    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        
+        <!-- 自定义方法 -->
+        <plugin type="org.mybatis.generator.plugins.MapperPlugin">
+            <property name="targetProject" value="../mybatis-generator-oracle/src/main/java"/>
+            <property name="targetPackage" value="com.fendo.mapper"/>
+        </plugin>  
+		<commentGenerator>
+		    <!-- 设置编码为UTF-8 -->
+		    <property name="javaFileEncoding" value="UTF-8"/>
+		    <!--配置生成注释，默认注释已经修改 -->
+		    <property name="suppressAllComments" value="false"/>
+		</commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->   
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@106.14.160.67:1521:gzyy" userId="xlsgrid" password="Eru43wPo">  
+			  <!-- 针对oracle数据库 -->
+			    <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <!-- 生成模型的包名和位置-->  
+        <javaModelGenerator targetPackage="com.fendo.bean" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.fendo.bean.BaseModel"/>
+        </javaModelGenerator>  
+        <!-- 生成映射文件的包名和位置-->  
+        <sqlMapGenerator targetPackage="com.fendo.mapper" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <!-- 生成DAO的包名和位置-->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fendo.mapper" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="com.fendo.mapper.BaseMapper"/>
+        </javaClientGenerator> 
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->  
+        <table tableName="Healthyorder" domainObjectName="Healthyorder" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>                       
+        
+    </context>  
+</generatorConfiguration>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzsys.yun.mapper.SickbldtlMapper">
+
+  <resultMap id="BaseResultMap" type="com.gzsys.yun.entity.Sickbldtl">
+    <result column="GUID" jdbcType="CHAR" property="guid" />
+    <result column="SEQID" jdbcType="DECIMAL" property="seqid" />
+    <result column="FORMGUID" jdbcType="CHAR" property="formguid" />
+    <result column="DRUID" jdbcType="VARCHAR" property="druid" />
+    <result column="DRUNAM" jdbcType="VARCHAR" property="drunam" />
+    <result column="UNIT" jdbcType="VARCHAR" property="unit" />
+    <result column="YPNUM" jdbcType="DECIMAL" property="ypnum" />
+    <result column="CI" jdbcType="VARCHAR" property="ci" />
+    <result column="PIAN" jdbcType="VARCHAR" property="pian" />
+    <result column="DAY" jdbcType="VARCHAR" property="day" />
+    <result column="NUMNIT" jdbcType="VARCHAR" property="numnit" />
+    <result column="KFWY" jdbcType="VARCHAR" property="kfwy" />
+    <result column="PC" jdbcType="VARCHAR" property="pc" />
+    <result column="PCNAME" jdbcType="VARCHAR" property="pcname" />
+    <result column="KFWYNAME" jdbcType="VARCHAR" property="kfwyname" />
+    <result column="SMLUNT" jdbcType="VARCHAR" property="smlunt" />
+    <result column="ST_PRICE" jdbcType="DECIMAL" property="stPrice" />
+    <result column="ST_QTY" jdbcType="VARCHAR" property="stQty" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.gzsys.yun.entity.Sickbldtl">
+    insert into SICKBLDTL (GUID, SEQID, FORMGUID, 
+      DRUID, DRUNAM, UNIT, 
+      YPNUM, CI, PIAN, DAY, 
+      NUMNIT, KFWY, PC, PCNAME, 
+      KFWYNAME, SMLUNT, ST_PRICE, 
+      ST_QTY, STATE)
+    values (#{guid,jdbcType=CHAR}, #{seqid,jdbcType=DECIMAL}, #{formguid,jdbcType=CHAR}, 
+      #{druid,jdbcType=VARCHAR}, #{drunam,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{ypnum,jdbcType=DECIMAL}, #{ci,jdbcType=VARCHAR}, #{pian,jdbcType=VARCHAR}, #{day,jdbcType=VARCHAR}, 
+      #{numnit,jdbcType=VARCHAR}, #{kfwy,jdbcType=VARCHAR}, #{pc,jdbcType=VARCHAR}, #{pcname,jdbcType=VARCHAR}, 
+      #{kfwyname,jdbcType=VARCHAR}, #{smlunt,jdbcType=VARCHAR}, #{stPrice,jdbcType=DECIMAL}, 
+      #{stQty,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.gzsys.yun.entity.Sickbldtl">
+    insert into SICKBLDTL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        GUID,
+      </if>
+      <if test="seqid != null">
+        SEQID,
+      </if>
+      <if test="formguid != null">
+        FORMGUID,
+      </if>
+      <if test="druid != null">
+        DRUID,
+      </if>
+      <if test="drunam != null">
+        DRUNAM,
+      </if>
+      <if test="unit != null">
+        UNIT,
+      </if>
+      <if test="ypnum != null">
+        YPNUM,
+      </if>
+      <if test="ci != null">
+        CI,
+      </if>
+      <if test="pian != null">
+        PIAN,
+      </if>
+      <if test="day != null">
+        DAY,
+      </if>
+      <if test="numnit != null">
+        NUMNIT,
+      </if>
+      <if test="kfwy != null">
+        KFWY,
+      </if>
+      <if test="pc != null">
+        PC,
+      </if>
+      <if test="pcname != null">
+        PCNAME,
+      </if>
+      <if test="kfwyname != null">
+        KFWYNAME,
+      </if>
+      <if test="smlunt != null">
+        SMLUNT,
+      </if>
+      <if test="stPrice != null">
+        ST_PRICE,
+      </if>
+      <if test="stQty != null">
+        ST_QTY,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=CHAR},
+      </if>
+      <if test="seqid != null">
+        #{seqid,jdbcType=DECIMAL},
+      </if>
+      <if test="formguid != null">
+        #{formguid,jdbcType=CHAR},
+      </if>
+      <if test="druid != null">
+        #{druid,jdbcType=VARCHAR},
+      </if>
+      <if test="drunam != null">
+        #{drunam,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="ypnum != null">
+        #{ypnum,jdbcType=DECIMAL},
+      </if>
+      <if test="ci != null">
+        #{ci,jdbcType=VARCHAR},
+      </if>
+      <if test="pian != null">
+        #{pian,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="numnit != null">
+        #{numnit,jdbcType=VARCHAR},
+      </if>
+      <if test="kfwy != null">
+        #{kfwy,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null">
+        #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="pcname != null">
+        #{pcname,jdbcType=VARCHAR},
+      </if>
+      <if test="kfwyname != null">
+        #{kfwyname,jdbcType=VARCHAR},
+      </if>
+      <if test="smlunt != null">
+        #{smlunt,jdbcType=VARCHAR},
+      </if>
+      <if test="stPrice != null">
+        #{stPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stQty != null">
+        #{stQty,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>  
+<!-- 数据库驱动-->  
+    <classPathEntry  location="D:\MavenRepository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>  
+    <context id="DB2Tables"  targetRuntime="MyBatis3">  
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；一般保留默认值，遇到数据库关键字（Java关键字），
+                                 使用columnOverride覆盖
+         -->
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!--开启抑制类型的警告信息-->
+        <property name="suppressTypeWarnings" value="true"/>
+    
+		<!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+	    <!-- 自动生成tostring方法 -->
+	    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- Example生成,需要在table设置属性ByExample=true -->
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+        
+        <!-- 统一Mapper 接口 -->
+        <plugin type="org.mybatis.generator.plugins.MapperPlugin">
+            <property name="interfaceName" value="BaseMapper"/>
+            <!-- 是否删除Mapper类里的方法，默认删除-->
+            <property name="deleteMethod" value="true"/>
+        </plugin>
+                
+        <!-- service层插件 -->
+        <plugin type="org.mybatis.generator.plugins.MybatisServicePlugin">
+            <property name="targetPackage" value="com.fendo.generatorplus.service"/>
+            <property name="implementationPackage" value="com.fendo.generatorplus.service.impl"/>
+            <property name="targetProject" value="src/main/java"/>
+            <property name="enableInsert" value="true"/>
+            <property name="enableUpdateByExampleSelective" value="true"/>
+            <property name="enableInsertSelective" value="true"/>
+            <property name="enableUpdateByPrimaryKey" value="true"/>
+            <property name="enableDeleteByPrimaryKey" value="true"/>
+            <property name="enableDeleteByExample" value="true"/>
+            <property name="enableUpdateByPrimaryKeySelective" value="true"/>
+            <property name="enableUpdateByExample" value="true"/>
+        </plugin>
+
+           
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+        <commentGenerator type="org.mybatis.generator.comment.SwaggerCommentGenerator">
+			<!-- 是否禁止显示日期 true：是 ： false:否 -->
+			<property name="suppressDate" value="false" />
+			<!-- 是否去除自动生成的所有注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+			<!-- 是否添加字段注释 true:是 false：否 -->
+			<property name="addRemarkComments" value="true" />
+			<!-- 自定义属性 作者名称 -->
+			<property name="author" value="Fendo" />
+			<!-- 自定义属性 当前版本 -->
+			<property name="version" value="1.0" />	
+			<!-- 自定义属性 版权 -->
+			<property name="copyright" value="2017-2020 贯众健康公司" />	
+		</commentGenerator>
+        
+        <!--数据库链接URL，用户名、密码 -->   
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test" userId="root" password="root">  
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <!-- 生成模型的包名和位置-->  
+        <javaModelGenerator targetPackage="com.fendo.generatorplus.entity" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <!-- 生成映射文件的包名和位置-->  
+        <sqlMapGenerator targetPackage="com.fendo.generatorplus.dao" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <!-- 生成DAO的包名和位置-->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fendo.generatorplus.dao" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->  
+        <table tableName="test" domainObjectName="TestEntity"></table>
+        <table tableName="user" domainObjectName="UserEntity"></table>
+    </context>  
+</generatorConfiguration>  
