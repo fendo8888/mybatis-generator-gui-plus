@@ -28,11 +28,11 @@
 			<!-- 自定义属性 当前版本 -->
 			<property name="version" value="1.0" />	
 			<!-- 自定义属性 版权 -->
-			<property name="copyright" value="2017-2020 贯众健康公司" />						
+			<property name="copyright" value="2017-2020 xxx健康公司" />						
 		</commentGenerator>		
 		
         <!--数据库链接URL，用户名、密码 -->   
-        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@106.14.160.67:1521:test" userId="test" password="Eru43wPo">  
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@xxxx.xxx.xxxxx.xx:xxx:test" userId="xxxxx" password="xxxx">  
 			  <!-- 针对oracle数据库 -->
 			    <property name="remarksReporting" value="true"></property>
         </jdbcConnection>  
